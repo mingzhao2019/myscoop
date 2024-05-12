@@ -3,7 +3,6 @@
     "description": "Microsoft Teams (Work or School). Office 365's chats, meetings, files and apps together in one place",
     "homepage": "https://adoption.microsoft.com/new-microsoft-teams/",
     "license": "Proprietary",
-    "changelog": "https://support.microsoft.com/en-au/office/what-s-new-in-microsoft-teams-d7092a6d-c896-424c-b362-a472d5f105de",
     "architecture": {
         "32bit": {
             "url": "https://statics.teams.cdn.office.net/production-windows-x86/24091.214.2846.1452/MSTeams-x86.msix#/dl.zip",
