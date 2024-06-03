@@ -13,7 +13,7 @@ Install an app
 | App                                    | Descriptions                                                                                        |
 |----------------------------------------|-----------------------------------------------------------------------------------------------------|
 |dida365                                 |滴答清单                                                                                              |
-|Double Commander     |Two pane file manager inspired by Total Commander              |
+|DoubleCommander     |Two pane file manager inspired by Total Commander              |
 |microsoft-teams-work-or-school-portable | Microsoft Teams (Work or School). Office 365's chats, meetings, files and apps together in one place|
 |piclist                     |Picture upload and management based on Picgo|
 |qianji|ad-free, non-intrusive, and non-background-running bookkeeping app|
