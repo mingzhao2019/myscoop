@@ -1,6 +1,7 @@
 {
     "homepage": "https://github.com/stnkl/EverythingToolbar",
     "version": "1.3.4",
+    "license": "MIT",
     "url": "https://github.com/stnkl/EverythingToolbar/archive/refs/tags/1.3.4.zip",
     "notes": "Enable EverythingToolbar via the context menu of the taskbar.",
     "hash": "d3dbd0b4c38bc30461ce7f15abe6fbf73cbcf154af1093d185f374333bceada5",
@@ -9,11 +10,11 @@
     "pre_install": "if (-not (is_admin)) { error 'Administrator privileges are needed for installation'; break }",
     "installer": {
         "file": "install.cmd",
-        "keep": "true"
+        "keep": true
     },
     "uninstaller": {
         "file": "uninstall.cmd",
-        "keep": "true"
+        "keep": true
     },
     "autoupdate": {
         "url": "https://github.com/stnkl/EverythingToolbar/archive/refs/tags/$version.zip"
