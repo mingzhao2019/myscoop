@@ -16,8 +16,7 @@
     "homepage": "https://www.dida365.com/",
     "shortcuts": [
         [
-            "TickTick.exe",
-            "滴答清单"
+            "TickTick.exe"
         ]
     ],
     "checkver": {
