@@ -23,3 +23,5 @@ Install an app
 |wemeet|tecent meeting|
 |ShowDesktopOneMonitor| An App adds the abillity to Show Desktop (Win + D) only for One Monitor! |
 |EverythingToolbar| Instant file search integration for the Windows taskbar powered by Everything. |
+|mycomputermanager| An App to manage the shortcuts in my computer in Windows.|
+
