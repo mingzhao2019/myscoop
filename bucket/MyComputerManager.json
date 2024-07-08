@@ -17,5 +17,4 @@
     "autoupdate": {
       "url": "https://ghproxy.net/https://github.com/1357310795/MyComputerManager/releases/download/v$version/MyComputerManager-x64.exe"
     }
-  }
-  
+}
