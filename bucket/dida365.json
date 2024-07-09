@@ -22,7 +22,7 @@
     ],
     "checkver": {
         "script": [
-            "$dl_url = 'https://dida365.com/static/getApp/download??type=win64'",
+            "$dl_url = 'https://dida365.com/static/getApp/download?type=win64'",
             "$dl = cache_path 'dida365' '64bit' $dl_url",
             "Invoke-WebRequest $dl_url -OutFile $dl",
             "$ver = (Get-Item $dl).VersionInfo.ProductVersion",
