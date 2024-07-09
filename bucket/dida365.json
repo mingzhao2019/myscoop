@@ -4,7 +4,7 @@
     "license": "Unknown",
     "architecture": {
         "64bit": {
-            "url": "https://dida365.com/static/getApp/download?type=win64"
+            "url": "https://dida365.com/static/getApp/download?type=win64",
             "hash": "5bd339c215d93c9ad6d6614010d7b043bd7914fcb7efd05050ed634ec2b7eacf"
         },
         "32bit": {
@@ -22,7 +22,7 @@
     ],
     "checkver": {
         "script": [
-            "$dl_url = 'https://dida365.com/static/getApp/download?type=win64'",
+            "$dl_url = 'https://dida365.com/static/getApp/download??type=win64'",
             "$dl = cache_path 'dida365' '64bit' $dl_url",
             "Invoke-WebRequest $dl_url -OutFile $dl",
             "$ver = (Get-Item $dl).VersionInfo.ProductVersion",
