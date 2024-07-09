@@ -22,27 +22,22 @@
     ],
     "checkver": {
         "script": [
-            "$urls = @('https://www.dida365.com/down/getApp/download?type=win64', 'https://www.dida365.com/down/getApp/download?type=win')",
-            "$versions = @()",
-            "foreach ($url in $urls) {",
-            "    $response = Invoke-WebRequest -Uri $url -MaximumRedirection 0 -Headers @{ 'User-Agent' = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3' } -ErrorAction SilentlyContinue",
-            "    if ($response.StatusCode -eq 302) {",
-            "        $location = $response.Headers['Location']",
-            "        $version = $location -match '\\d{4}' | Out-Null; $Matches[0]",
-            "        $versions += $version",
-            "    }",
-            "}",
-            "$versions | Sort-Object -Descending | Select-Object -First 1"
+            "$dl_url = 'https://www.dida365.com/down/getApp/download?type=win64'",
+            "$dl = cache_path 'dida365' '64bit' $dl_url",
+            "Invoke-WebRequest $dl_url -OutFile $dl",
+            "$ver = (Get-Item $dl).VersionInfo.ProductVersion",
+            "Move-Item -Force $dl (cache_path 'dida365' $ver $dl_url)",
+            "$ver"
         ],
-        "regex": "(\\d{4})"
+        "regex": "(\\S+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cdn.dida365.cn/download/win64/dida_win_setup_release_x64_$version.exe"
+                "url": "https://www.dida365.com/down/getApp/download?type=win64"
             },
             "32bit": {
-                "url": "https://cdn.dida365.cn/download/win/dida_win_setup_release_x86_$version.exe"
+                "url": "https://www.dida365.com/down/getApp/download?type=win"
             }
         }
     }
