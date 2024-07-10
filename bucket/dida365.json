@@ -4,11 +4,11 @@
     "license": "Unknown",
     "architecture": {
         "64bit": {
-            "url": "https://dida365.com/static/getApp/download?type=win64",
+            "url": "https://cdn.dida365.cn/download/win64/dida_win_setup_release_x64_$matchHead.exe",
             "hash": "5bd339c215d93c9ad6d6614010d7b043bd7914fcb7efd05050ed634ec2b7eacf"
         },
         "32bit": {
-            "url": "https://dida365.com/static/getApp/download?type=win",
+            "url": "https://cdn.dida365.cn/download/win/dida_win_setup_release_x86_$matchHead.exe",
             "hash": "9ed1557f84546d10e50b842c179ca7c5359dd31d2a6f63edd5021c1e37e36273"
         }
     },
@@ -21,23 +21,29 @@
         ]
     ],
     "checkver": {
+        "url": "https://dida365.com/static/getApp/download?type=win64",
         "script": [
-            "$dl_url = 'https://dida365.com/static/getApp/download?type=win64'",
-            "$dl = cache_path 'dida365' '64bit' $dl_url",
-            "Invoke-WebRequest $dl_url -OutFile $dl",
-            "$ver = (Get-Item $dl).VersionInfo.ProductVersion",
-            "Move-Item -Force $dl (cache_path 'dida365' $ver $dl_url)",
-            "$ver"
+            "$resp = Invoke-WebRequest -Uri $url -MaximumRedirection 0 -ErrorAction Ignore",
+            "$location = $resp.Headers['Location']",
+            "$matchHead = [regex]::Match($location, 'release_x64_([\\d]+).exe').Groups[1].Value",
+            "$version = \"$($matchHead.Substring(0, 1)).$($matchHead.Substring(1, 1)).$($matchHead.Substring(2, 1)).$($matchHead.Substring(3))\"",
+            "Write-Output $version"
         ],
-        "regex": "(\\S+)"
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dida365.com/static/getApp/download?type=win64"
+                "url": "https://cdn.dida365.cn/download/win64/dida_win_setup_release_x64_$matchHead.exe",
+                "hash": {
+                    "url": "$url.sha256"
+                }
             },
             "32bit": {
-                "url": "https://dida365.com/static/getApp/download?type=win"
+                "url": "https://cdn.dida365.cn/download/win/dida_win_setup_release_x86_$matchHead.exe",
+                "hash": {
+                    "url": "$url.sha256"
+                }
             }
         }
     }
