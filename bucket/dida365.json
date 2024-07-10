@@ -42,13 +42,13 @@
             "64bit": {
                 "url": "https://dida365.com/static/getApp/download?type=win64",
                 "hash": {
-                    "url": "$url.sha256"
+                    "url": "https://dida365.com/static/getApp/download?type=win64"
                 }
             },
             "32bit": {
                 "url": "https://dida365.com/static/getApp/download?type=win",
                 "hash": {
-                    "url": "$url.sha256"
+                    "url": "https://dida365.com/static/getApp/download?type=win64"
                 }
             }
         }
