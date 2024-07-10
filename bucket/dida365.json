@@ -4,12 +4,18 @@
     "license": "Unknown",
     "architecture": {
         "64bit": {
-            "url": "https://cdn.dida365.cn/download/win64/dida_win_setup_release_x64_6010.exe",
-            "hash": "5bd339c215d93c9ad6d6614010d7b043bd7914fcb7efd05050ed634ec2b7eacf"
+            "url": "https://dida365.com/static/getApp/download?type=win64",
+            "hash": {
+                "url": "$url",
+                "find": "5bd339c215d93c9ad6d6614010d7b043bd7914fcb7efd05050ed634ec2b7eacf"
+            }
         },
         "32bit": {
-            "url": "https://cdn.dida365.cn/download/win/dida_win_setup_release_x86_6010.exe",
-            "hash": "9ed1557f84546d10e50b842c179ca7c5359dd31d2a6f63edd5021c1e37e36273"
+            "url": "https://dida365.com/static/getApp/download?type=win",
+            "hash": {
+                "url": "$url",
+                "find": "9ed1557f84546d10e50b842c179ca7c5359dd31d2a6f63edd5021c1e37e36273"
+            }
         }
     },
     "innosetup": true,
@@ -34,13 +40,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cdn.dida365.cn/download/win64/dida_win_setup_release_x64_$version_no_dots.exe",
+                "url": "https://dida365.com/static/getApp/download?type=win64",
                 "hash": {
                     "url": "$url.sha256"
                 }
             },
             "32bit": {
-                "url": "https://cdn.dida365.cn/download/win/dida_win_setup_release_x86_$version_no_dots.exe",
+                "url": "https://dida365.com/static/getApp/download?type=win",
                 "hash": {
                     "url": "$url.sha256"
                 }
