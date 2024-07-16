@@ -1,5 +1,5 @@
 # Usage
-Basic usage of scoop [reference[(https://alist.zhaoming.org/Pub-Share/Scoop.md)
+Basic usage of scoop [reference](https://alist.zhaoming.org/Pub-Share/Scoop.md)
 
 Add the bucket to scoop
 
