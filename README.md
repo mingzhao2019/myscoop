@@ -1,4 +1,6 @@
 # Usage
+Basic usage of scoop [reference[(https://alist.zhaoming.org/Pub-Share/Scoop.md)
+
 Add the bucket to scoop
 
 `scoop bucket add mingzhao2019 https://github.com/mingzhao2019/myscoop.git`
