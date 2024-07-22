@@ -11,8 +11,8 @@
     },
     "shortcuts": [
         [
-            "bin/seadrive-gui.exe",
-            "SeaDrive"
+            "PFiles/SeaDrive/bin/seadrive-gui.exe",
+            "SeaDrive-GUI"
         ]
     ],
     "checkver": {
