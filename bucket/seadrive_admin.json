@@ -28,8 +28,21 @@
     },
     "installer": {
         "script": [
-            "Start-Process msiexec.exe -Wait -ArgumentList @('/i', \"$dir\\seadrive-$version-en.msi\", '/qn', 'ALLUSERS=1') -Verb RunAs",
-            "Remove-Item \"$dir\\seadrive-$version-en.msi\""
+            "$msiFile = \"$dir\\seadrive-$version-en.msi\"",
+            "if (Test-Path $msiFile) {",
+            "    Write-Host 'Installing SeaDrive with administrator privileges...'",
+            "    $process = Start-Process msiexec.exe -Wait -ArgumentList @('/i', $msiFile, '/qn', 'ALLUSERS=1') -Verb RunAs -PassThru",
+            "    if ($process.ExitCode -eq 0) {",
+            "        Write-Host 'Installation successful.'",
+            "        Remove-Item $msiFile",
+            "    } else {",
+            "        Write-Host \"Installation failed with exit code $($process.ExitCode)\"",
+            "        exit 1",
+            "    }",
+            "} else {",
+            "    Write-Host 'MSI file not found. Installation cannot proceed.'",
+            "    exit 1",
+            "}"
         ]
     }
 }
