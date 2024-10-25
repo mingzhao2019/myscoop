@@ -1,15 +1,15 @@
 {
-    "version": "6.1.1.0",
+    "version": "6.1.0.0",
     "description": "让你的 Windows 电脑成为高效办公平台",
     "license": "Unknown",
     "architecture": {
         "64bit": {
             "url": "https://www.dida365.com/down/getApp/download?type=win64#/dl.exe",
-            "hash": "39f6a86d955ab8591b3f444d400ced1e0f0c34dd8610258991e4b7bda01f1c72"
+            "hash": "a7a2422ffaa1e5c97553787ad2c2593e5d76b021d1f3769c4a717d4adf1aa5c8"
         },
         "32bit": {
             "url": "https://www.dida365.com/down/getApp/download?type=win#/dl.exe",
-            "hash": "f26033104ac38e46ce79d5efe7ac9de11352f3af02e3f41ded310917b13c9066"
+            "hash": "5af8aea239ec1af6b6876348de844ac57158b18dcf94b2e3476614a41f4244ca"
         }
     },
     "innosetup": true,
