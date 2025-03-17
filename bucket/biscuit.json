@@ -1,0 +1,39 @@
+{
+    "version": "1.2.30",
+    "description": "Biscuit. The browser for business built around workspaces.",
+    "homepage": "https://github.com/agata/dl.biscuit",
+    "license": "Proprietary",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/agata/dl.biscuit/releases/download/v1.2.30/Biscuit-Setup-1.2.30.exe",
+            "hash": "174 MB"
+        }
+    },
+    "shortcuts": [
+        [
+            "Biscuit.exe",
+            "Biscuit"
+        ]
+    ],
+    "installer": {
+        "script": [
+            "$extracted = \"$dir\\extracted\"",
+            "$msi = \"$dir\\msi\"",
+            "Expand-DarkArchive \"$dir\\$fname\" \"$extracted\"",
+            "Expand-MsiArchive \"$extracted\\AttachedContainer\\Biscuit.msi\" \"$msi\"",
+            "Move-Item \"$msi\\Msi\\*\" \"$dir\" -Force",
+            "Remove-Item $extracted, $msi, \"$dir\\$fname\" -Force -Recurse"
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/agata/dl.biscuit/releases",
+        "regex": "Biscuit-Setup-([\\d.]+)\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/agata/dl.biscuit/releases/download/v$version/Biscuit-Setup-$version.exe"
+            }
+        }
+    }
+}
