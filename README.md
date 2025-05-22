@@ -27,4 +27,8 @@ Install an app
 |EverythingToolbar                       | Instant file search integration for the Windows taskbar powered by Everything. |
 |mycomputermanager                       | An App to manage the shortcuts in my computer in Windows.|
 |amazon-kindle                           | Amazon Kindle Reading App. |
-|dart_simple_live                        | Live steaming App. |
+|dart_simple_live                        | Live streaming App. |
+|zlibrary                                | The Z-Library launcher for desktop. |
+|imdisk                                  | This tool will let you mount image files of hard drive, cd-rom or floppy, and create one or several ramdisks with various parameters. |
+|Privazer-Portable                       | PrivaZer A PC cleaner & Privacy tool. |
+
