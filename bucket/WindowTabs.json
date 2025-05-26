@@ -4,7 +4,7 @@
     "homepage": "https://github.com/leafOfTree/WindowTabs",
     "license": "MIT",
     "url": "https://github.com/leafOfTree/WindowTabs/releases/download/v2025.02.23/WindowTabs.exe#/dl.7z",
-    "hash": "请手动计算hash值",
+    "hash": "766c1d181c16971e068da0b899a5d68572e924f429b24bbdcc5387daf277cc7d",
     "bin": "WindowTabs.exe",
     "shortcuts": [
         [
