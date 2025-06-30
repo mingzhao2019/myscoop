@@ -1,10 +1,10 @@
 {
-    "version": "2025.02.23",
+    "version": "2025.06.30",
     "description": "A Windows application for managing and organizing open windows with tabs",
     "homepage": "https://github.com/leafOfTree/WindowTabs",
     "license": "MIT",
-    "url": "https://github.com/leafOfTree/WindowTabs/releases/download/v2025.02.23/WindowTabs.exe",
-    "hash": "766c1d181c16971e068da0b899a5d68572e924f429b24bbdcc5387daf277cc7d",
+    "url": "https://github.com/leafOfTree/WindowTabs/releases/download/v2025.06.30/WindowTabs.exe",
+    "hash": "da014856cef33c806381d03308f1c8f35c69efbc15d2e5a5c9ebba58f8f26fb5",
     "bin": "WindowTabs.exe",
     "shortcuts": [
         [
