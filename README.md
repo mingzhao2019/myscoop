@@ -14,7 +14,7 @@ Install an app
 
 | App                                    | Descriptions                                                                                        |
 |----------------------------------------|-----------------------------------------------------------------------------------------------------|
-|Dida365                                 | 滴答清单                                                                                              |
+|Dida365                                 | TickTick                                                                                             |
 |DoubleCommander                         | Two pane file manager inspired by Total Commander. |
 |Microsoft-teams-work-or-school-portable | Microsoft Teams (Work or School). Office 365's chats, meetings, files and apps together in one place. |
 |Piclist                                 | Picture upload and management based on Picgo. |
@@ -33,3 +33,4 @@ Install an app
 |Privazer-Portable                       | PrivaZer A PC cleaner & Privacy tool. |
 |WindowTabs                              | A Windows application for managing and organizing open windows with tabs. |
 |Utools                                  | A cross-platform tool for efficiency. |
+|Hotkey Detective                        | A small utility for investigating what application holds a global hotkey. |
