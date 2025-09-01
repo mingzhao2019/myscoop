@@ -1,5 +1,5 @@
 # Usage
-Basic usage of scoop [reference](https://alist.zmict.com/Pub-Share/Scoop.md)
+Basic usage of scoop [reference](https://share.obsidian.zmict.com/aec0tg7k#5A3v8VifcjeOkqoNX2/jMCqbxP3SoVoq/gWUOK9H5MQ)
 
 Add the bucket to scoop
 
@@ -34,3 +34,4 @@ Install an app
 |WindowTabs                              | A Windows application for managing and organizing open windows with tabs. |
 |Utools                                  | A cross-platform tool for efficiency. |
 |Hotkey Detective                        | A small utility for investigating what application holds a global hotkey. |
+|ExplorerTabUtility                      | Auto-convert windows to tabs, duplicate tabs, reopen closed ones, and more. |
