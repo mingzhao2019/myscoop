@@ -35,3 +35,4 @@ Install an app
 |Utools                                  | A cross-platform tool for efficiency. |
 |Hotkey Detective                        | A small utility for investigating what application holds a global hotkey. |
 |ExplorerTabUtility                      | Auto-convert windows to tabs, duplicate tabs, reopen closed ones, and more. |
+|LXMusic                                 | An electron-based music player. |
