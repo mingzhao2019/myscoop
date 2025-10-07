@@ -36,3 +36,4 @@ Install an app
 |Hotkey Detective                        | A small utility for investigating what application holds a global hotkey. |
 |ExplorerTabUtility                      | Auto-convert windows to tabs, duplicate tabs, reopen closed ones, and more. |
 |LXMusic                                 | An electron-based music player. |
+|Nexus-terminal                          | A modern Web SSH / RDP / VNC client, offering a standalone desktop version. |
