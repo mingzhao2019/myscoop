@@ -1,0 +1,20 @@
+{
+  "homepage": "https://voce.chat/",
+  "license": "GPL-3.0-or-later",
+  "version": "0.9.0",
+  "url": "https://github.com/Privoce/vocechat-desktop/releases/download/v$version/VoceChat-$version.exe",
+  "hash": "B8A3BE116B419BE32D9B51F5B8E3FAA1EB3365911EEDFBEFF2DFDB65F3DF54DC",
+  "checkver": "github",
+  "autoupdate": {
+    "url": "https://github.com/Privoce/vocechat-desktop/releases/download/v$version/VoceChat-$version.exe"
+  },
+  "installer": {
+    "script": "Start-Process -FilePath \"$dir\\VoceChat-$version.exe\" -ArgumentList '/S' -Wait"
+  },
+  "uninstaller": {
+    "script": [
+      "$uninst = \"$env:LOCALAPPDATA\\Programs\\VoceChat\\Uninstall VoceChat.exe\"",
+      "if (Test-Path $uninst) { Start-Process -FilePath $uninst -ArgumentList '/S' -Wait }"
+    ]
+  }
+}
