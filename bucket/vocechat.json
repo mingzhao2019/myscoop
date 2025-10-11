@@ -3,7 +3,7 @@
   "license": "GPL-3.0-or-later",
   "version": "0.9.0",
   "url": "https://github.com/Privoce/vocechat-desktop/releases/download/v0.9.0/VoceChat-0.9.0.exe",
-  "hash": "B8A3BE116B419BE32D9B51F5B8E3FAA1EB3365911EEDFBEFF2DFDB65F3DF54DC",
+  "hash": "88b5781d049ed7716b31748dc8af4d842c95101d2b3b863f2fcf54a27339483e",
   "checkver": "github",
   "autoupdate": {
     "url": "https://github.com/Privoce/vocechat-desktop/releases/download/v$version/VoceChat-$version.exe"
