@@ -2,15 +2,23 @@
   "homepage": "https://voce.chat/",
   "license": "GPL-3.0-or-later",
   "version": "0.9.0",
-  "url": "https://github.com/Privoce/vocechat-desktop/releases/download/v0.9.0/VoceChat-0.9.0.exe",
-  "hash": "88b5781d049ed7716b31748dc8af4d842c95101d2b3b863f2fcf54a27339483e",
+  "url": "https://github.com/Privoce/vocechat-desktop/releases/download/v0.9.0/VoceChat-Setup-0.9.0.exe",
+  "hash": "PASTE_SHA256_OF_SETUP_EXE_HERE",
   "checkver": "github",
   "autoupdate": {
-    "url": "https://github.com/Privoce/vocechat-desktop/releases/download/v$version/VoceChat-$version.exe"
+    "url": "https://github.com/Privoce/vocechat-desktop/releases/download/v$version/VoceChat-Setup-$version.exe"
   },
   "installer": {
-    "script": "Start-Process -FilePath \"$dir\\VoceChat-$version.exe\" -ArgumentList '/S' -Wait"
+    "script": [
+      "Start-Process -FilePath \"$dir\\VoceChat-Setup-$version.exe\" -ArgumentList '/S' -Wait",
+      "Start-Sleep -Seconds 2",
+      "Get-Process -Name 'VoceChat' -ErrorAction SilentlyContinue | Stop-Process -Force"
+    ]
   },
+  "post_install": [
+    "$p = Get-Process | Where-Object { $_.MainWindowTitle -like '*VoceChat*' }",
+    "if ($p) { $p | Stop-Process -Force }"
+  ],
   "uninstaller": {
     "script": [
       "$uninst = \"$env:LOCALAPPDATA\\Programs\\VoceChat\\Uninstall VoceChat.exe\"",
