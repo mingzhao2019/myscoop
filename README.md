@@ -37,3 +37,4 @@ Install an app
 |ExplorerTabUtility                      | Auto-convert windows to tabs, duplicate tabs, reopen closed ones, and more. |
 |LXMusic                                 | An electron-based music player. |
 |Nexus-terminal                          | A modern Web SSH / RDP / VNC client, offering a standalone desktop version. |
+|Stream-music                            | Stream Music is a music player that connects to music services such as Subsonic, Navidrome, etc. |
