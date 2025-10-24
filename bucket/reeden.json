@@ -5,7 +5,6 @@
   "license": "Proprietary",
   "url": "https://download.reeden.app/Reeden/1.15.2+300/Reeden-1.15.2+300-windows.zip",
   "hash": "C326565222366D9CA4857A6BD13E81677CA5DF5128275E97C481537ADD0AAA11",
-  "extract_dir": "Reeden",
   "shortcuts": [
     [
       "Reeden.exe",
@@ -13,8 +12,9 @@
     ]
   ],
   "checkver": {
-    "github": "reeden-org/reeden-app"
-  },
+      "url": "https://download.reeden.app/Reeden/",
+      "regex": "Reeden-([0-9\\.\\+]+)-windows\\.zip"
+  }
   "autoupdate": {
     "url": "https://download.reeden.app/Reeden/$version/Reeden-$version-windows.zip"
   }
