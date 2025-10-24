@@ -14,7 +14,7 @@
   "checkver": {
       "url": "https://download.reeden.app/Reeden/",
       "regex": "Reeden-([0-9\\.\\+]+)-windows\\.zip"
-  }
+  },
   "autoupdate": {
     "url": "https://download.reeden.app/Reeden/$version/Reeden-$version-windows.zip"
   }
