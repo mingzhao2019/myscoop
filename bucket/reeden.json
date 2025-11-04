@@ -1,18 +1,23 @@
 {
-  "version": "1.15.2+300",
-  "description": "Reeden is an Ebook reader supports EPUB/MOBI/AZW3/PDF",
-  "homepage": "https://reeden.app",
-  "license": "Proprietary",
-  "url": "https://download.reeden.app/Reeden/1.15.2%2B300/Reeden-1.15.2%2B300-windows.zip",
-  "hash": "C326565222366D9CA4857A6BD13E81677CA5DF5128275E97C481537ADD0AAA11",
-  "shortcuts": [["Reeden.exe", "Reeden"]],
-  "checkver": {
-    "url": "https://reeden.app/download",
-    "regex": "Reeden\\/(?<ver>[0-9.]+)(?:%2B|\\+)(?<build>\\d+)\\/Reeden-\\k<ver>(?:%2B|\\+)\\k<build>-windows\\.zip",
-    "replace": "${ver}+${build}",
-    "reverse": true
-  },
-  "autoupdate": {
-    "url": "https://download.reeden.app/Reeden/$matchVer%2B$matchBuild/Reeden-$matchVer%2B$matchBuild-windows.zip"
-  }
+    "version": "1.16.1+330",
+    "description": "Reeden is an Ebook reader supports EPUB/MOBI/AZW3/PDF",
+    "homepage": "https://reeden.app",
+    "license": "Proprietary",
+    "url": "https://download.reeden.app/Reeden/1.16.1%2B330/Reeden-1.16.1%2B330-windows.zip",
+    "hash": "5c5bb4ec037fc2f65351296d4c85aeef3a76af5c0f2710d36b1233f1bb96bdac",
+    "shortcuts": [
+        [
+            "Reeden.exe",
+            "Reeden"
+        ]
+    ],
+    "checkver": {
+        "url": "https://reeden.app/download",
+        "regex": "Reeden\\/(?<ver>[0-9.]+)(?:%2B|\\+)(?<build>\\d+)\\/Reeden-\\k<ver>(?:%2B|\\+)\\k<build>-windows\\.zip",
+        "replace": "${ver}+${build}",
+        "reverse": true
+    },
+    "autoupdate": {
+        "url": "https://download.reeden.app/Reeden/$matchVer%2B$matchBuild/Reeden-$matchVer%2B$matchBuild-windows.zip"
+    }
 }
