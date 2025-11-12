@@ -29,17 +29,16 @@
 
   /* ---------- 自动检查更新 ---------- */
   "checkver": {
-    "script": [
-      "$api = 'https://api.github.com/repos/microsoft/winget-pkgs/contents/manifests/t/Tencent/TencentMeeting'",
-      "$ver = (Invoke-RestMethod $api | Where-Object name -notmatch '^\\.' | " +
-             "Sort-Object { [version] $_.name } -Descending | Select-Object -First 1).name",
-      "$yamlUrl = \"https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/t/Tencent/TencentMeeting/$ver/Tencent.TencentMeeting.installer.yaml\"",
-      "$yaml = Invoke-RestMethod $yamlUrl",
-      "$path_x64 = ([regex]'InstallerUrl:\\s*https://updatecdn\\.meeting\\.qq\\.com/(.+_x86_64.+)').Match($yaml).Groups[1].Value",
-      "Write-Output \"version:$ver;path_x64:$path_x64\""
-    ],
-    "regex": "version:(?<version>[^;]+);path_x64:(?<path_x64>.+)"
-  },
+  "script": [
+    "$api = 'https://api.github.com/repos/microsoft/winget-pkgs/contents/manifests/t/Tencent/TencentMeeting'",
+    "$ver = (Invoke-RestMethod $api | Where-Object { $_.name -notmatch '^\\.' } | Sort-Object {[version]$_.name} -Descending | Select-Object -First 1).name",
+    "$yamlUrl = \"https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/t/Tencent/TencentMeeting/$ver/Tencent.TencentMeeting.installer.yaml\"",
+    "$yaml = Invoke-RestMethod $yamlUrl",
+    "$path_x64 = ([regex]'InstallerUrl:\\s*https://updatecdn\\.meeting\\.qq\\.com/(.+_x86_64.+)').Match($yaml).Groups[1].Value",
+    "Write-Output \"version:$ver;path_x64:$path_x64\""
+  ],
+  "regex": "version:(?<version>[^;]+);path_x64:(?<path_x64>.+)"
+},
 
   "autoupdate": {
     "architecture": {
@@ -53,3 +52,4 @@
     }
   }
 }
+
