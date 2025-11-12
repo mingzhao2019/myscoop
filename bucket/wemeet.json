@@ -1,62 +1,42 @@
 {
   "version": "3.39.1.427",
-  "description": "腾讯会议，腾讯的一款视频会议软件 | A meeting software by Tencent.",
+  "description": "Tencent Meeting | 腾讯会议",
   "homepage": "https://meeting.tencent.com/",
   "license": { "identifier": "Freemium" },
 
-  "notes": [
-    "Installation dir: $env:ProgramFiles\\Tencent\\WeMeet",
-    "Reference: https://abyss.abgox.com/faq/external-installation-directories"
-  ],
-
   "architecture": {
     "64bit": {
-      "url": "https://updatecdn.meeting.qq.com/cos/9a27d0a6b9faf68786d997cea293a201/TencentMeeting_0300000000_3.39.1.427_x86_64.publish.exe",
+      // 直接用 #/dl.7z 解包，完全不跑官方安装器
+      "url": "https://updatecdn.meeting.qq.com/cos/9a27d0a6b9faf68786d997cea293a201/TencentMeeting_0300000000_3.39.1.427_x86_64.publish.exe#/dl.7z",
       "hash": "05b8c52eacc6109ebfec5cc7931028596478dfc400dc385d76aea879f07cc859"
     }
   },
 
+  // 解压后真正程序所在的子目录（7-Zip SFX 里叫 WeMeet）
+  "extract_dir": "WeMeet",
+
   "shortcuts": [
-    [ "$env:ProgramFiles\\Tencent\\WeMeet\\WeMeetApp.exe", "腾讯会议" ]
+    [ "WeMeetApp.exe", "腾讯会议" ]
   ],
 
-  "pre_install": [
-    "$bucket = if ($bucket) { $bucket } else { (scoop config).'abgox-abyss-bucket-name' }",
-    ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
-    "A-Start-Install",
-    "A-Require-Admin",
-    "A-New-LinkDirectory @(\"$env:AppData\\Tencent\\WeMeet\")",
-    "A-Install-Exe -ArgumentList @('/SilentInstall=0','/StartProcess=0')"
-  ],
-  "post_install": [
-    "$bucket = if ($bucket) { $bucket } else { (scoop config).'abgox-abyss-bucket-name' }",
-    ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
-    "A-Complete-Install"
-  ],
-  "pre_uninstall": [
-    "$bucket = if ($bucket) { $bucket } else { (scoop config).'abgox-abyss-bucket-name' }",
-    ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
-    "A-Start-Uninstall",
-    "A-Require-Admin",
-    "A-Stop-Process \"$env:ProgramFiles\\Tencent\\WeMeet\"",
-    "$Uninstaller = Get-ChildItem \"$env:ProgramFiles\\Tencent\\WeMeet\" WeMeetUninstall.exe -Recurse | Sort-Object LastWriteTime -Descending | Select-Object -First 1",
-    "A-Remove-Link",
-    "A-Uninstall-Exe -Uninstaller $Uninstaller.FullName",
-    "A-Remove-TempData @(\"$env:AppData\\WeMeetApp\")"
-  ],
-  "post_uninstall": [
-    "$bucket = if ($bucket) { $bucket } else { (scoop config).'abgox-abyss-bucket-name' }",
-    ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
-    "A-Complete-Uninstall"
+  // 把会写入用户目录的文件夹持久化（先用一次，观察真实路径再增删）
+  "persist": [
+    "data",
+    "WeMeetStorage"
   ],
 
+  /* ------------ 自动更新 ------------ */
   "checkver": {
     "script": [
-      ". \"$pwd\\bin\\utils.ps1\"",
-      "$info = A-Get-InstallerInfoFromWinget 'Tencent.TencentMeeting' 'exe'",
-      "ver:$($info.PackageVersion);path_x64:$($info.x64_machine.InstallerUrl -replace 'https://updatecdn\\.meeting\\.qq\\.com/')"
+      # ". \"$pwd\\bin\\utils.ps1\""    // 不再需要自定义函数，可删
+      "$info = (Invoke-RestMethod 'https://api.github.com/repos/microsoft/winget-pkgs/contents/manifests/t/Tencent/TencentMeeting' | " +
+               "Where-Object name -notmatch '^\\.' | " +
+               "Sort-Object {[version]$_} -Descending | Select-Object -First 1).name",
+      "$verYaml = Invoke-RestMethod \"https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/t/Tencent/TencentMeeting/$info/Tencent.TencentMeeting.installer.yaml\"",
+      "$m = [regex]::Match($verYaml, 'InstallerUrl:\\s*https://updatecdn\\.meeting\\.qq\\.com/(.+_x86_64.+)')",
+      \"version:$info;path_x64:$($m.Groups[1].Value)\"
     ],
-    "regex": "ver:(?<version>[^;]+);path_x64:(?<path_x64>.+)"
+    "regex": "version:(?<version>[^;]+);path_x64:(?<path_x64>.+)"
   },
 
   "autoupdate": {
