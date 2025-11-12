@@ -38,3 +38,4 @@ Install an app
 |LXMusic                                 | An electron-based music player. |
 |Nexus-terminal                          | A modern Web SSH / RDP / VNC client, offering a standalone desktop version. |
 |Stream-music                            | Stream Music is a music player that connects to music services such as Subsonic, Navidrome, etc. |
+|Reeden                                  | Reeden is an Ebook reader supports EPUB/MOBI/AZW3/PDF. |
