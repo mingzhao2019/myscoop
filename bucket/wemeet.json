@@ -6,25 +6,22 @@
 
   "notes": [
     "Installation dir (绿色目录): $dir",
-    "User data is persisted via Scoop 'persist' feature."
+    "User data is persisted via Scoop 'persist'."
   ],
 
   "architecture": {
     "64bit": {
-      /* 直接加  #/dl.7z  解包，完全不跑官方安装器 */
       "url": "https://updatecdn.meeting.qq.com/cos/9a27d0a6b9faf68786d997cea293a201/TencentMeeting_0300000000_3.39.1.427_x86_64.publish.exe#/dl.7z",
       "hash": "05b8c52eacc6109ebfec5cc7931028596478dfc400dc385d76aea879f07cc859"
     }
   },
 
-  /* 解压后真正程序所在的子目录 */
   "extract_dir": "WeMeet",
 
   "shortcuts": [
     [ "WeMeetApp.exe", "腾讯会议" ]
   ],
 
-  /* 常见用户数据目录，可根据实际再添删 */
   "persist": [
     "data",
     "WeMeetStorage"
@@ -33,12 +30,13 @@
   /* ---------- 自动检查更新 ---------- */
   "checkver": {
     "script": [
-      "$ver = (Invoke-RestMethod 'https://api.github.com/repos/microsoft/winget-pkgs/contents/manifests/t/Tencent/TencentMeeting' |",
-      "        Where-Object name -notmatch '^\\.' |",
-      "        Sort-Object {[version]$_} -Descending | Select-Object -First 1).name",
-      "$yaml = Invoke-RestMethod \"https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/t/Tencent/TencentMeeting/$ver/Tencent.TencentMeeting.installer.yaml\"",
-      "$m = [regex]::Match($yaml, 'InstallerUrl:\\s*https://updatecdn\\.meeting\\.qq\\.com/(.+_x86_64.+)')",
-      \"version:$ver;path_x64:$($m.Groups[1].Value)\"
+      "$api = 'https://api.github.com/repos/microsoft/winget-pkgs/contents/manifests/t/Tencent/TencentMeeting'",
+      "$ver = (Invoke-RestMethod $api | Where-Object name -notmatch '^\\.' | " +
+             "Sort-Object { [version] $_.name } -Descending | Select-Object -First 1).name",
+      "$yamlUrl = \"https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/t/Tencent/TencentMeeting/$ver/Tencent.TencentMeeting.installer.yaml\"",
+      "$yaml = Invoke-RestMethod $yamlUrl",
+      "$path_x64 = ([regex]'InstallerUrl:\\s*https://updatecdn\\.meeting\\.qq\\.com/(.+_x86_64.+)').Match($yaml).Groups[1].Value",
+      "Write-Output \"version:$ver;path_x64:$path_x64\""
     ],
     "regex": "version:(?<version>[^;]+);path_x64:(?<path_x64>.+)"
   },
@@ -55,4 +53,3 @@
     }
   }
 }
-
