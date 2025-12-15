@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
-    "version": "3.40.2.407",
+    "version": "3.40.1.423",
     "description": "An efficient and reliable video conferencing service powered by Tencent that is built for collaboration.",
     "homepage": "https://meeting.tencent.com/",
     "license": {
@@ -9,18 +9,18 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://updatecdn.meeting.qq.com/$matchPathX64#/dl.7z",
-            "hash": "56b3a9e9d05f2ff698e0a1a4d1576c22b08c83674da7cd7882d246b4d6ade5ef"
+            "url": "https://updatecdn.meeting.qq.com/cos/e60bb1e5028a5de8c17346b394eceace/TencentMeeting_0300000000_3.40.1.423_x86_64.publish.exe#/dl.7z",
+            "hash": "722f29780cb93ad862e3d1aea110e2b387d6d8eb5119551d53d542069d22d09e"
         },
         "32bit": {
-            "url": "https://updatecdn.meeting.qq.com/$matchPathX86#/dl.7z",
-            "hash": "c6778ba97e158f91de74fb9157c8023d0d9bdf65b28ed44a85edbb28be721b01"
+            "url": "https://updatecdn.meeting.qq.com/cos/cd427d861cf31e0ebf73e3ee852bca63/TencentMeeting_0300000000_3.40.1.423.publish.exe#/dl.7z",
+            "hash": "063e3e517fd28efce3e1aea0a370202bc85f72622c1abc04c8e09bebcae94ac9"
         }
     },
     "post_install": [
-        "$weMeet = Get-ChildItem -Path $dir -Recurse -Filter 'WeMeetApp.exe' | Select-Object -First 1",
-        "if ($weMeet) { $appDir = $weMeet.Directory; if ($appDir.Parent.FullName -eq $dir) { Rename-Item -Path $appDir.FullName -NewName $version -Force } }",
-        "Remove-Item \"$dir\\`$*\",\"$dir\\WeMeetApp_new.exe\",\"$dir\\$version\\WeMeetUninstall.exe\" -Recurse -Force -ErrorAction SilentlyContinue"
+        "Rename-Item \"$dir\\`$_*_\" \"$dir\\$version\"",
+        "Remove-Item \"$dir\\$*\" -Recurse -Force -ErrorAction SilentlyContinue",
+        "Remove-Item \"$dir\\WeMeetApp_new.exe\", \"$dir\\$version\\WeMeetUninstall.exe\" -Force -ErrorAction SilentlyContinue"
     ],
     "shortcuts": [
         [
@@ -43,26 +43,26 @@
             "$installerInfo = (Invoke-WebRequest -Uri $uri).Content",
             "$global:ProgressPreference = $prevProgressPreference",
             "$installerInfo -split '[\\r\\n]+' | ForEach-Object {",
-            "  if ($_ -cmatch '^\\s+InstallerUrl:\\s*https://updatecdn\\.meeting\\.qq\\.com/(?<PathX64>.+_x86_64.+)$') {",
-            "    \"path_x64:$($Matches['PathX64'])\"",
-            "  } elseif ($_ -cmatch '^\\s+InstallerUrl:\\s*https://updatecdn\\.meeting\\.qq\\.com/(?<PathX86>.+)$') {",
-            "    \"path_x86:$($Matches['PathX86'])\"",
+            "  if ($_ -cmatch '^\\s+InstallerUrl:\\s*https://(.+_x86_64.+)$') {",
+            "    \"url_x64:$($Matches[1])\"",
+            "  } elseif ($_ -cmatch '^\\s+InstallerUrl:\\s*https://(.+)$') {",
+            "    \"url_x86:$($Matches[1])\"",
             "  }",
             "}"
         ],
-        "regex": "^version:(?<version>\\S+)\\s+path_x86:(?<PathX86>\\S+)\\s+path_x64:(?<PathX64>\\S+)$"
+        "regex": "^version:(?<version>\\S+)\\s+url_x86:(?<URLX86>\\S+)\\s+url_x64:(?<URLX64>\\S+)$"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://updatecdn.meeting.qq.com/$matchPathX64#/dl.7z",
+                "url": "https://$matchURLX64#/dl.7z",
                 "hash": {
                     "url": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/t/Tencent/TencentMeeting/$version/Tencent.TencentMeeting.installer.yaml",
                     "regex": "- Architecture:\\s*x64[\\s\\S]+?InstallerSha256:\\s*$sha256"
                 }
             },
             "32bit": {
-                "url": "https://updatecdn.meeting.qq.com/$matchPathX86#/dl.7z",
+                "url": "https://$matchURLX86#/dl.7z",
                 "hash": {
                     "url": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/t/Tencent/TencentMeeting/$version/Tencent.TencentMeeting.installer.yaml",
                     "regex": "- Architecture:\\s*x86[\\s\\S]+?InstallerSha256:\\s*$sha256"
