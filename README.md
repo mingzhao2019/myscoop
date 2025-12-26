@@ -39,3 +39,4 @@ Install an app
 |Nexus-terminal                          | A modern Web SSH / RDP / VNC client, offering a standalone desktop version. |
 |Stream-music                            | Stream Music is a music player that connects to music services such as Subsonic, Navidrome, etc. |
 |Reeden                                  | Reeden is an Ebook reader supports EPUB/MOBI/AZW3/PDF. |
+|BlueGauge                               | A lightweight tray tool for easily viewing the battery level of your Bluetooth devices. |
