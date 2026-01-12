@@ -40,3 +40,5 @@ Install an app
 |Stream-music                            | Stream Music is a music player that connects to music services such as Subsonic, Navidrome, etc. |
 |Reeden                                  | Reeden is an Ebook reader supports EPUB/MOBI/AZW3/PDF. |
 |BlueGauge                               | A lightweight tray tool for easily viewing the battery level of your Bluetooth devices. |
+|Nipaplay                                | NipaPlay-Reload is a modern cross-platform video player. |
+|Vocechat                                | A desktop client of Vocechat service. |
