@@ -42,3 +42,4 @@ Install an app
 |BlueGauge                               | A lightweight tray tool for easily viewing the battery level of your Bluetooth devices. |
 |Nipaplay                                | NipaPlay-Reload is a modern cross-platform video player. |
 |Vocechat                                | A desktop client of Vocechat service. |
+|Doubao                                  | DouBao is a chatbot AI assistant by ByteDance. |
