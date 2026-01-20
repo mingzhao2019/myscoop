@@ -1,66 +1,30 @@
 {
     "version": "1.87.7",
-    "description": "豆包，字节跳动的 AI 聊天智能对话问答助手，写作文案翻译情感陪伴编程全能工具 | DouBao is a chatbot AI assistant by ByteDance. It can answer questions, write essays, translate text, and provide programming support.",
-    "homepage": "https://www.doubao.com/",
-    "license": {
-        "identifier": "Unknown"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao_pc/1.87.7/Doubao_installer_1.87.7.exe",
-            "hash": "3ca456b938e4d90422cd199867024ebf2902366b8df77fd138a2c034e725d417"
-        }
-    },
+    "description": "LLM client by douyin",
+    "homepage": "https://doubao.com",
+    "license": "freeware",
+    "url": "https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao_pc/1.87.7/Doubao_installer_1.87.7.exe#/dl.7z",
+    "hash": "3ca456b938e4d90422cd199867024ebf2902366b8df77fd138a2c034e725d417",
     "shortcuts": [
         [
-            "app\\Doubao\\Doubao.exe",
-            "豆包"
+            "Doubao.exe",
+            "Doubao"
         ]
-    ],
-    "pre_install": [
-        "$bucket = if ($bucket) { $bucket } else { (scoop config).'abgox-abyss-bucket-name' }",
-        ". $bucketsdir\\$bucket\\script\\utils.ps1",
-        "A-Start-Install",
-        "A-New-LinkDirectory \"$env:LocalAppData\\Doubao\"",
-        "$InstallLocation = '\"' + \"$dir\\app\" + '\"'",
-        "$LogLocation = '\"' + \"$env:TEMP\\scoop-$app-logs\" + '\"'",
-        "A-Install-App -ArgumentList '--command=quiet_install', \"--target_dir=$InstallLocation\", \"--log_dir=$LogLocation\"",
-        "A-Hold-App"
-    ],
-    "post_install": [
-        "$bucket = if ($bucket) { $bucket } else { (scoop config).'abgox-abyss-bucket-name' }",
-        ". $bucketsdir\\$bucket\\script\\utils.ps1",
-        "A-Complete-Install"
-    ],
-    "pre_uninstall": [
-        "$bucket = if ($bucket) { $bucket } else { (scoop config).'abgox-abyss-bucket-name' }",
-        ". $bucketsdir\\$bucket\\script\\utils.ps1",
-        "A-Start-Uninstall",
-        "A-Uninstall-Manually 'app'",
-        "A-Remove-Link"
-    ],
-    "post_uninstall": [
-        "$bucket = if ($bucket) { $bucket } else { (scoop config).'abgox-abyss-bucket-name' }",
-        ". $bucketsdir\\$bucket\\script\\utils.ps1",
-        "A-Complete-Uninstall"
     ],
     "checkver": {
         "script": [
-            ". $pwd\\script\\utils.ps1",
-            "$InstallerInfo, $out = A-Get-InstallerInfoFromWinget 'ByteDance.Doubao' 'exe'",
-            "$out"
+            ". \"$pwd\\bin\\utils.ps1\"",
+            "$dl_info = get_installer_info 'ByteDance/Doubao'",
+            "\"ver:$($dl_info.PackageVersion);\"",
+            "\"x64:$($dl_info.x64_exe.InstallerUrl);\""
         ],
-        "regex": "(?:.*ver:(?<version>[^;]+))(?:.*x64:(?<x64>[^;]+))?(?:.*x86:(?<x86>[^;]+))?(?:.*arm64:(?<arm64>[^;]+))?"
+        "regex": "ver:(?<version>.+?); x64:(?<x64>.+?);"
     },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "$matchX64",
-                "hash": {
-                    "url": "temp-autoupdate.json",
-                    "jsonpath": "$.x64_user.InstallerSha256"
-                }
-            }
+        "url": "$matchX64#/dl.7z",
+        "hash": {
+            "url": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/b/ByteDance/Doubao/$version/ByteDance.Doubao.installer.yaml",
+            "regex": "Architecture: x64[\\s\\S]+?InstallerSha256:\\s?(.+)"
         }
     }
 }
