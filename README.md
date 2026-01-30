@@ -43,4 +43,4 @@ Install an app
 |Nipaplay                                | NipaPlay-Reload is a modern cross-platform video player. |
 |Vocechat                                | A desktop client of Vocechat service. |
 |Doubao                                  | DouBao is a chatbot AI assistant by ByteDance. |
-|Mineru                                  | Document Extraction/Conversion Tool for the AI Era. |
+|Mineru                                  | Document Extraction/Conversion Tool for the AI Era. |\
