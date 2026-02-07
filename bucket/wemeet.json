@@ -18,14 +18,14 @@
         }
     },
     "post_install": [
-    "$tempDir = Get-ChildItem \"$dir\\`$_*_\" -Directory -ErrorAction SilentlyContinue | Select-Object -First 1",
-    "if ($tempDir) {",
-    "    Move-Item \"$tempDir\\*\" \"$dir\\\" -Force",
-    "    Remove-Item $tempDir.FullName -Recurse -Force",
-    "}",
-    "Remove-Item \"$dir\\`$*\" -Recurse -Force -ErrorAction SilentlyContinue",
-    "Remove-Item \"$dir\\WeMeetApp_new.exe\" -Force -ErrorAction SilentlyContinue"
-],
+        "$tempDir = Get-ChildItem \"$dir\\`$_*_\" -Directory -ErrorAction SilentlyContinue | Select-Object -First 1",
+        "if ($tempDir) {",
+        "    Move-Item \"$tempDir\\*\" \"$dir\\\" -Force",
+        "    Remove-Item $tempDir.FullName -Recurse -Force",
+        "}",
+        "Remove-Item \"$dir\\`$*\" -Recurse -Force -ErrorAction SilentlyContinue",
+        "Remove-Item \"$dir\\WeMeetApp_new.exe\" -Force -ErrorAction SilentlyContinue"
+    ],
     "shortcuts": [
         [
             "WeMeetApp.exe",
@@ -59,14 +59,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://$matchURLX64#/dl.7z",
+                "url": "https://$matchUrlx64#/dl.7z",
                 "hash": {
                     "url": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/t/Tencent/TencentMeeting/$version/Tencent.TencentMeeting.installer.yaml",
                     "regex": "- Architecture:\\s*x64[\\s\\S]+?InstallerSha256:\\s*$sha256"
                 }
             },
             "32bit": {
-                "url": "https://$matchURLX86#/dl.7z",
+                "url": "https://$matchUrlx86#/dl.7z",
                 "hash": {
                     "url": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/t/Tencent/TencentMeeting/$version/Tencent.TencentMeeting.installer.yaml",
                     "regex": "- Architecture:\\s*x86[\\s\\S]+?InstallerSha256:\\s*$sha256"
@@ -75,4 +75,3 @@
         }
     }
 }
-
