@@ -18,10 +18,14 @@
         }
     },
     "post_install": [
-        "Rename-Item \"$dir\\`$_*_\" \"$dir\\$version\"",
-        "Remove-Item \"$dir\\$*\" -Recurse -Force -ErrorAction SilentlyContinue",
-        "Remove-Item \"$dir\\WeMeetApp_new.exe\", \"$dir\\$version\\WeMeetUninstall.exe\" -Force -ErrorAction SilentlyContinue"
-    ],
+    "$tempDir = Get-ChildItem \"$dir\\`$_*_\" -Directory -ErrorAction SilentlyContinue | Select-Object -First 1",
+    "if ($tempDir) {",
+    "    Move-Item \"$tempDir\\*\" \"$dir\\\" -Force",
+    "    Remove-Item $tempDir.FullName -Recurse -Force",
+    "}",
+    "Remove-Item \"$dir\\`$*\" -Recurse -Force -ErrorAction SilentlyContinue",
+    "Remove-Item \"$dir\\WeMeetApp_new.exe\" -Force -ErrorAction SilentlyContinue"
+],
     "shortcuts": [
         [
             "WeMeetApp.exe",
@@ -71,3 +75,4 @@
         }
     }
 }
+
