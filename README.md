@@ -45,3 +45,4 @@ Install an app
 |Doubao                                  | DouBao is a chatbot AI assistant by ByteDance. |
 |Mineru                                  | Document Extraction/Conversion Tool for the AI Era. |
 |Termix                                  | A web-based server management platform with SSH terminal, tunneling, and file editing capabilities. |
+|Rmx                                     | Fast parallel directory deletion for Windows - blazingly fast removal of node_modules, target, and other large directories. |
