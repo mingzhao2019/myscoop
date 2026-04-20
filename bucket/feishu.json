@@ -1,64 +1,50 @@
 {
     "version": "7.66.5",
-    "description": "飞书，字节跳动下先进企业协作与管理平台 | Feishu is a cloud-based enterprise collaboration and management platform developed by ByteDance",
+    "description": "飞书",
     "homepage": "https://www.feishu.cn/",
     "license": {
-        "identifier": "Freemium"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://sf3-cn.feishucdn.com/obj/ee-appcenter/c2adfa54/Feishu-win32_ia32-7.66.5-signed.exe",
-            "hash": "e5499a9f32b480f253fcaedd9417684215755a5e7d1dc86b04897062693773fe"
-        }
+        "identifier": "Freeware"
     },
     "shortcuts": [
         [
-            "app\\Feishu\\Feishu.exe",
+            "Feishu.exe",
             "飞书"
         ]
     ],
-    "link": "$env:AppData\\LarkShell",
-    "pre_install": [
-        "if (!$bucket) { $bucket = (scoop config).'abgox-abyss-bucket-name' }",
-        ". $bucketsdir\\$bucket\\script\\utils.ps1",
-        "A-Start-Install",
-        "$InstallLocation = '\"' + \"$dir\\app\" + '\"'",
-        "$LogLocation = '\"' + \"$env:TEMP\\scoop-$app-logs\" + '\"'",
-        "A-Install-App -ArgumentList '--command=quiet_install', \"--target_dir=$InstallLocation\", \"--log_dir=$LogLocation\"",
-        "A-Hold-App"
-    ],
-    "post_install": [
-        "if (!$bucket) { $bucket = (scoop config).'abgox-abyss-bucket-name' }",
-        ". $bucketsdir\\$bucket\\script\\utils.ps1",
-        "A-Complete-Install"
-    ],
-    "pre_uninstall": [
-        "if (!$bucket) { $bucket = (scoop config).'abgox-abyss-bucket-name' }",
-        ". $bucketsdir\\$bucket\\script\\utils.ps1",
-        "A-Start-Uninstall",
-        "A-Uninstall-Manually 'app'",
-        "A-Remove-Link"
-    ],
-    "post_uninstall": [
-        "if (!$bucket) { $bucket = (scoop config).'abgox-abyss-bucket-name' }",
-        ". $bucketsdir\\$bucket\\script\\utils.ps1",
-        "A-Complete-Uninstall"
-    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://sf3-cn.feishucdn.com/obj/ee-appcenter/a16e46c3/Feishu-win32_x64-7.66.5-signed.exe#/dl.7z",
+            "hash": "md5:339c6f4cc164f4126c058ddfc82e9438"
+        },
+        "32bit": {
+            "url": "https://sf3-cn.feishucdn.com/obj/ee-appcenter/c2adfa54/Feishu-win32_ia32-7.66.5-signed.exe#/dl.7z",
+            "hash": "md5:e63b202b6d917d0a38f0cbabd0fd4d6b"
+        }
+    },
     "checkver": {
         "script": [
-            ". $pwd\\script\\utils.ps1",
-            "$res, $out = A-Get-InstallerInfoFromWinget 'ByteDance.Feishu' 'exe'",
-            "$out"
+            "$url = 'https://www.feishu.cn/api/downloads'",
+            "$dl = cache_path 'feishu' 'unknown' $url",
+            "Invoke-WebRequest $url -OutFile $dl",
+            "$it = (parse_json $dl).versions[0]",
+            "$it.Windows_x64.download_link + '|' + $it.Windows.download_link"
         ],
-        "regex": "(?:.*ver:(?<version>[^;]+))(?:.*x64:(?<x64>[^;]+))?(?:.*x86:(?<x86>[^;]+))?(?:.*arm64:(?<arm64>[^;]+))?"
+        "regex": "/(?<xid>[\\d\\w]+)/Feishu-win32_x64.+\\|.+/(?<id>[\\d\\w]+)/Feishu-win32_ia32-([\\d\\.]+)\\-signed\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "$matchX86",
+                "url": "https://sf3-cn.feishucdn.com/obj/ee-appcenter/$matchXid/Feishu-win32_x64-$version-signed.exe#/dl.7z",
                 "hash": {
-                    "url": "temp-autoupdate.json",
-                    "jsonpath": "$.x86_user.InstallerSha256"
+                    "url": "https://www.feishu.cn/api/downloads",
+                    "jp": "$.versions.Windows_x64.hash"
+                }
+            },
+            "32bit": {
+                "url": "https://sf3-cn.feishucdn.com/obj/ee-appcenter/$matchId/Feishu-win32_ia32-$version-signed.exe#/dl.7z",
+                "hash": {
+                    "url": "https://www.feishu.cn/api/downloads",
+                    "jp": "$.versions.Windows.hash"
                 }
             }
         }
