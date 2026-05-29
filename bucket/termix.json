@@ -1,17 +1,17 @@
 {
-    "version": "2.3.0",
+    "version": "2.3.1",
     "description": "A web-based server management platform with SSH terminal, tunneling, and file editing capabilities.",
     "homepage": "https://docs.termix.site/",
     "license": "Apache-2.0",
     "notes": "Configuration files are stored in AppData\\Roaming\\Termix",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Termix-SSH/Termix/releases/download/release-2.3.0-tag/termix_windows_x64_portable.zip",
-            "hash": "e657716c3d85b1bf80c645382ec0e8ea35549e286f039b0d2b163026921150a9"
+            "url": "https://github.com/Termix-SSH/Termix/releases/download/release-2.3.1-tag/termix_windows_x64_portable.zip",
+            "hash": "f3f672d4096a8e3d92e1480096ec01e58eb57f63f2b691d3356f2520aa4c8b6c"
         },
         "32bit": {
-            "url": "https://github.com/Termix-SSH/Termix/releases/download/release-2.3.0-tag/termix_windows_ia32_portable.zip",
-            "hash": "a48985e401e1155a578a5f1bc583f37b0a7187b06b25874de5c7fb8ab6c73cc3"
+            "url": "https://github.com/Termix-SSH/Termix/releases/download/release-2.3.1-tag/termix_windows_ia32_portable.zip",
+            "hash": "b122ceea3204ce8e4d901f90bbe1255690c7e73b503db9244693546261ec736d"
         }
     },
     "bin": "termix.exe",
