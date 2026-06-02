@@ -1,10 +1,10 @@
 {
-    "version": "1.32.1+615",
+    "version": "1.33.1+648",
     "description": "Reeden is an Ebook reader supports EPUB/MOBI/AZW3/PDF",
     "homepage": "https://reeden.app",
     "license": "Proprietary",
-    "url": "https://download.reeden.app/Reeden/1.32.1%2B615/Reeden-1.32.1%2B615-windows.zip",
-    "hash": "1c8e1f0abab2a7f09dc845e089bea381fefa2e7f543149f5ef694574c9fc69e7",
+    "url": "https://download.reeden.app/Reeden/1.33.1%2B648/Reeden-1.33.1%2B648-windows.zip",
+    "hash": "a31f58dba7f90e5076463cd3aaaa39bbe16c3a6f7f9f47ac3a0fb306b1aaffa6",
     "shortcuts": [
         [
             "Reeden.exe",
